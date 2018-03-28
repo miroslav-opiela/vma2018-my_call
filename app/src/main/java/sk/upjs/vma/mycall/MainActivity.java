@@ -131,6 +131,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         adapter = new SimpleCursorAdapter(this,
                 android.R.layout.simple_list_item_1, NO_CURSOR, from, to, NO_FLAGS);
 
+        adapter.setViewBinder(new CallLogViewBinder());
+
         // nastavenie daneho adaptera pre gridView
         gridView.setAdapter(adapter);
 

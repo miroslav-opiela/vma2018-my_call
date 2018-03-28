@@ -13,13 +13,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleCursorAdapter;
 
 /**
  * Aktivita implementuje LoaderCallback.
  */
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, AdapterView.OnItemClickListener {
 
     /**
      * Defaultny null-ovy kurzor.
@@ -132,6 +133,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         // nastavenie daneho adaptera pre gridView
         gridView.setAdapter(adapter);
+
+        gridView.setOnItemClickListener(this);
     }
 
 
@@ -170,5 +173,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(Loader<Cursor> loader) {
         // adapter si nastavi defaultny nullovy kurzor
         adapter.swapCursor(NO_CURSOR);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Cursor cursor = (Cursor) parent.getItemAtPosition(position);
+        String text = cursor.getString(cursor.getColumnIndex(CallLog.Calls.DURATION));
+        Snackbar.make(gridView, text, Snackbar.LENGTH_LONG).show();
     }
 }

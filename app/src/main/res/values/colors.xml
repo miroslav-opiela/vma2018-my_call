@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="incomingCallColor">#33B5E5</color>
+    <color name="outgoingCallColor">#99CC00</color>
+    <color name="missedCallColor">#FF4444</color>
 </resources>

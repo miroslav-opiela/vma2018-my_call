@@ -18,13 +18,13 @@ public class CallLogViewBinder implements SimpleCursorAdapter.ViewBinder {
         int type = cursor.getInt(cursor.getColumnIndex(CallLog.Calls.TYPE));
         switch (type) {
             case CallLog.Calls.INCOMING_TYPE:
-                textView.setBackgroundColor(Color.BLUE);
+                textView.setBackgroundColor(textView.getResources().getColor(R.color.incomingCallColor));
                 break;
             case CallLog.Calls.OUTGOING_TYPE:
-                textView.setBackgroundColor(Color.GREEN);
+                textView.setBackgroundColor(textView.getResources().getColor(R.color.outgoingCallColor));
                 break;
             case CallLog.Calls.MISSED_TYPE:
-                textView.setBackgroundColor(Color.RED);
+                textView.setBackgroundColor(textView.getResources().getColor(R.color.missedCallColor));
                 break;
         }
 
